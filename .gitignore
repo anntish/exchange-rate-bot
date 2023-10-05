@@ -5,7 +5,7 @@ __pycache__/
 # C extensions
 *.so
 *.pyc
-
+.idea
 
 # Distribution / packaging
 .Python
@@ -57,3 +57,4 @@ docs/_build/
 
 # PyBuilder
 target/
+/.idea/workspace.xml
