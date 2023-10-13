@@ -1,7 +1,7 @@
 from datetime import datetime
 import peewee as pw
 
-db = pw.SqliteDatabase('test.pw')
+db = pw.SqliteDatabase('database.pw')
 
 
 class BaseModel(pw.Model):

@@ -1,3 +1,4 @@
+from keyboards import exchange_rates
 from loader import bot
 from models.base_model import User
 
@@ -14,4 +15,3 @@ def handle_start(message):
     user = User.create(user_id=user_id, request_text=request_text, response_text=response_text)
     user.save()
 
-    bot.send_message(message.chat.id, response_text)
