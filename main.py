@@ -1,8 +1,7 @@
 from loader import bot
 
 from handlers.default_handlers import start, help
-from handlers.custom_handlers import hello, low, high, history, unknown_handler
-from keyboards import exchange_rates
+from handlers.custom_handlers import hello, low, high, history, currency_handlers
 
 
 if __name__ == "__main__":
@@ -14,4 +13,7 @@ if __name__ == "__main__":
     bot.add_message_handler(low.handler_low)
     bot.add_message_handler(high.handler_high)
     bot.add_message_handler(history.handler_history)
-    bot.add_message_handler(unknown_handler.unknown_input)
+    bot.add_message_handler(currency_handlers.get_value_rate)
+
+
+
