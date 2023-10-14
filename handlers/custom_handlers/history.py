@@ -1,10 +1,16 @@
 import sqlite3
 from loader import bot
-from models.base_model import User
+from utils.create_save_user import save_user_request
 
 
 @bot.message_handler(commands=['history'])
 def handler_history(message):
+    """
+    Обработчик сообщений для получения истории последних 10 запросов пользователя.
+    Не учитываются объемные и базовые запросы (/history, /help, /media_handler, /hello, /start)
+    :param message: Объект, предоставляющий сообщение пользователя
+    :return: None
+    """
     user_id = message.from_user.id
     request_text = message.text
 
@@ -27,7 +33,4 @@ def handler_history(message):
         response_text += f'Запрос: {entry[3]}\n' \
                          f'Ответ: {entry[4]}\n\n'
 
-    bot.send_message(message.chat.id, response_text)
-
-    user = User.create(user_id=user_id, request_text=request_text, response_text=response_text)
-    user.save()
+    save_user_request(user_id, request_text, response_text, message)

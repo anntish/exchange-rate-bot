@@ -4,6 +4,11 @@ from utils.api_date import dates
 
 
 def get_dollar_dynamics():
+    """
+    Функция для получения значений курса доллара за последние 10 дней с использованием API Центрального банка России.
+
+    :return: Список значений курса доллара за последние 10 дней.
+    """
     dollar_values = []
 
     for elem in dates:

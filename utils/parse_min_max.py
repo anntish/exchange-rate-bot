@@ -4,7 +4,13 @@ from utils.api_date import current_api
 
 
 def parse_value(action):
+    """
+    Функция для парсинга данных в формате XML с API Центрального банка России.
+    Не учитываются значения 'СДР (специальные права заимствования)' т.к СДР - актив, а не валюта.
 
+    :param action: Действие, которое необходимо выполнить в зависимости от запроса пользователя (min/max)
+    :return: Список, содержащий Имя валюты и ее Значение
+    """
     data = requests.get(current_api)
     total_values = bs.BeautifulSoup(data.content, 'xml')
 

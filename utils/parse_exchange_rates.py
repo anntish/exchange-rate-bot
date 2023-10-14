@@ -4,6 +4,12 @@ from utils.api_date import current_api
 
 
 def parse_rate(currency):
+    """
+    Функция для получения курса определенной валюты с использованием API Центрального банка России.
+
+    :param currency: Название валюты.
+    :return: Текущий курс заданной валюты.
+    """
     data = requests.get(current_api)
     total_values = bs.BeautifulSoup(data.content, 'xml')
 

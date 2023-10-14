@@ -5,6 +5,12 @@ from models.base_model import User
 
 @bot.message_handler(commands=['start'])
 def handle_start(message):
+    """
+    Обработчик сообщения /start
+
+    :param message: Объект, предоставляющий сообщение пользователя
+    :return: None
+    """
     user_id = message.from_user.id
     request_text = message.text
 
