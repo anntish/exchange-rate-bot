@@ -1,4 +1,4 @@
-from models.base_model import User
+from models.query_model import Query
 from loader import bot
 
 
@@ -14,7 +14,7 @@ def save_user_request(user_id, request_text, response_text, message):
 
     :return: None
     """
-    user = User.create(user_id=user_id, request_text=request_text, response_text=response_text)
+    user = Query.create(user_id=user_id, request_text=request_text, response_text=response_text)
     user.save()
     bot.reply_to(message, response_text)
 

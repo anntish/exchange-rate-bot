@@ -12,7 +12,7 @@ class BaseModel(pw.Model):
         database = db
 
 
-class User(BaseModel):
+class Query(BaseModel):
     """
     Класс User. Хранит информацию о пользователе и его запросах.
     """
@@ -22,4 +22,4 @@ class User(BaseModel):
     response_text = pw.TextField()
 
 
-db.create_tables([User], safe=True)
+db.create_tables([Query], safe=True)

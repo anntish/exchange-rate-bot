@@ -1,6 +1,6 @@
 from keyboards.currency_buttons import get_keyboard
 from loader import bot
-from models.base_model import User
+from models.query_model import Query
 
 
 @bot.message_handler(commands=['start'])
@@ -19,7 +19,7 @@ def handle_start(message):
 
     markup = get_keyboard()
 
-    user = User.create(user_id=user_id, request_text=request_text, response_text=response_text)
+    user = Query.create(user_id=user_id, request_text=request_text, response_text=response_text)
     user.save()
 
     bot.send_message(message.chat.id, response_text, reply_markup=markup)

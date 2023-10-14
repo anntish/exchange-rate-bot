@@ -1,6 +1,6 @@
 from loader import bot
+from models.query_model import Query
 from utils.api_date import dates
-from utils.create_save_user import save_user_request
 from utils.drawing_graphics import create_graphics
 from utils.parse_dollar_dynamics import get_dollar_dynamics
 
@@ -16,6 +16,10 @@ def handler_dollar_dynamic(message):
     user_id = message.from_user.id
     request_text = message.text
 
+    intermediate_response = 'Готовлю ответ на ваш запрос ‍📈🦾\n'
+
+    bot.reply_to(message, intermediate_response)
+
     img_io = create_graphics()
     dollar_values = get_dollar_dynamics()
     dollar_dynamics = list(zip(dates, dollar_values))
@@ -27,4 +31,6 @@ def handler_dollar_dynamic(message):
 
     bot.send_photo(message.chat.id, img_io)
 
-    save_user_request(user_id, request_text, response_text, message)
+    user = Query.create(user_id=user_id, request_text=request_text, response_text=intermediate_response + response_text)
+    user.save()
+    bot.send_message(message.chat.id, response_text)

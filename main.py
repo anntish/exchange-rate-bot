@@ -1,7 +1,7 @@
 from loader import bot
 
-from handlers.default_handlers import start, help
-from handlers.custom_handlers import hello, low, high, history, media_handler, custom_handler, currency_handlers
+from handlers.default_handlers import start, help, history
+from handlers.custom_handlers import hello, low, high, media_handler, custom_handler, currency_handlers
 
 
 if __name__ == "__main__":
