@@ -26,3 +26,5 @@ def parse_value(action):
     result = [currency_name, result_value]
 
     return result
+
+

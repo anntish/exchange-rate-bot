@@ -1,6 +1,11 @@
-from datetime import date
+from datetime import date, timedelta
 
-curr_date = str(date.today()).split('-')
-curr_day, curr_month, curr_year = curr_date[2], curr_date[1], curr_date[0]
+curr_date = date.today()
 
-current_api = f'https://cbr.ru/scripts/XML_daily.asp?date_req={curr_day}/{curr_month}/{curr_year}'
+previous_date = curr_date - timedelta(days=9)
+dates = [previous_date + timedelta(days=i) for i in range(10)]
+
+dates = [d.strftime('%d/%m/%Y') for d in dates]
+curr_date_format = curr_date.strftime('%d/%m/%Y')
+
+current_api = f'https://cbr.ru/scripts/XML_daily.asp?date_req={curr_date_format}'

@@ -14,6 +14,9 @@ def handler_history(message):
     cursor.execute("SELECT * FROM (SELECT * FROM user WHERE user_id = ? "
                    "AND request_text != '/history' "
                    "AND request_text != '/help' "
+                   "AND request_text != '/media_handler'"
+                   "AND request_text != '/hello'"
+                   "AND request_text != '/start'"
                    "ORDER BY id DESC LIMIT 10) ORDER BY id ASC", (user_id,))
 
     data = cursor.fetchall()
